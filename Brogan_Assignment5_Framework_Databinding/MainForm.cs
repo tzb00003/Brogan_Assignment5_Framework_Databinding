@@ -41,7 +41,8 @@ namespace Brogan_Assignment5_Framework_Databinding
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            AddDialog addDialog = new AddDialog();
+            AddDialog addDialog = new AddDialog(this.personBindingSource);
+
             if(addDialog.ShowDialog() == DialogResult.OK)
             {
                 var x = addDialog.NewName;

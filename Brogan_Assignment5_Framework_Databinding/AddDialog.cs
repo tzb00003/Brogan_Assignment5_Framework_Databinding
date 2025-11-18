@@ -15,20 +15,25 @@ namespace Brogan_Assignment5_Framework_Databinding
     {
         public string NewName = "";
         public string NewPhone = "";
-        public AddDialog()
+        private BindingSource _bindingSource;
+        public AddDialog(BindingSource binding)
         {
+            _bindingSource = binding;
+            newNameTextBox.DataBindings.Add("Text", _bindingSource, "Name");
+            newPhoneTextBox.DataBindings.Add("Text", _bindingSource, "Phone");
             InitializeComponent();
         }
 
         private void AddDialog_Load(object sender, EventArgs e)
         {
-            
+            _bindingSource.AddNew();
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
             NewName = newNameTextBox.Text;
             NewPhone = newPhoneTextBox.Text;
+            _bindingSource.EndEdit();
             Close();
         }
 
