@@ -33,5 +33,10 @@ namespace Brogan_Assignment5_Framework_Databinding
             this.tableAdapterManager.UpdateAll(this.projectDatabaseDataSet);
 
         }
+
+        private void personDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
