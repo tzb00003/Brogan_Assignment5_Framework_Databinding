@@ -38,5 +38,14 @@ namespace Brogan_Assignment5_Framework_Databinding
         {
 
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            AddDialog addDialog = new AddDialog();
+            if(addDialog.ShowDialog() == DialogResult.OK)
+            {
+                var x = addDialog.NewName;
+            } 
+        }
     }
 }

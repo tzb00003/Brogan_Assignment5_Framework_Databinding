@@ -76,6 +76,7 @@
             this.okButton.TabIndex = 4;
             this.okButton.Text = "&Ok";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -85,6 +86,7 @@
             this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // AddDialog
             // 
@@ -101,6 +103,7 @@
             this.MinimizeBox = false;
             this.Name = "AddDialog";
             this.Text = "Add New Person";
+            this.Load += new System.EventHandler(this.AddDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
