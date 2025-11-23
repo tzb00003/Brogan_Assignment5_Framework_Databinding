@@ -16,9 +16,7 @@ namespace Brogan_Assignment5_Framework_Databinding
             this.personTableAdapter.Fill(this.projectDBDataSet.Person);
         }
 
-
-
-        private void addButton_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)//Improved code with AI
         {
             using (AddDialog addDialog = new AddDialog())
             {
@@ -32,17 +30,15 @@ namespace Brogan_Assignment5_Framework_Databinding
                     try
                     {
                         personTableAdapter.Update(projectDBDataSet.Person);
-                        projectDBDataSet.AcceptChanges();
+                        projectDBDataSet.Person.AcceptChanges();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error adding record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
         }
-
-
 
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -55,7 +51,7 @@ namespace Brogan_Assignment5_Framework_Databinding
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving changes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -65,14 +61,14 @@ namespace Brogan_Assignment5_Framework_Databinding
         {
             try
             {
-                        personBindingSource.RemoveCurrent();
-                        this.personBindingSource.EndEdit();
-                        this.personTableAdapter.Update(this.projectDBDataSet.Person);
-                        this.projectDBDataSet.AcceptChanges();
+                    personBindingSource.RemoveCurrent();
+                    this.personBindingSource.EndEdit();
+                    this.personTableAdapter.Update(this.projectDBDataSet.Person);
+                    projectDBDataSet.Person.AcceptChanges();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error deleting record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
