@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
 using System.Windows.Forms;
 
 namespace Brogan_Assignment5_Framework_Databinding
@@ -19,34 +13,68 @@ namespace Brogan_Assignment5_Framework_Databinding
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'projectDatabaseDataSet.Person' table. You can move, or remove it, as needed.
-            this.personTableAdapter.Fill(this.projectDatabaseDataSet.Person);
-            // TODO: This line of code loads data into the 'projectDatabaseDataSet.Person' table. You can move, or remove it, as needed.
-            this.personTableAdapter.Fill(this.projectDatabaseDataSet.Person);
-
+            this.personTableAdapter.Fill(this.projectDBDataSet.Person);
         }
 
-        private void personBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.personBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.projectDatabaseDataSet);
 
-        }
-
-        private void personDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            AddDialog addDialog = new AddDialog(this.personBindingSource);
-
-            if(addDialog.ShowDialog() == DialogResult.OK)
+            using (AddDialog addDialog = new AddDialog())
             {
-                var x = addDialog.NewName;
-            } 
+                if (addDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var newRow = projectDBDataSet.Person.NewPersonRow();
+                    newRow.Name = addDialog.NewName;
+                    newRow.Phone = addDialog.NewPhone;
+                    projectDBDataSet.Person.Rows.Add(newRow);
+
+                    try
+                    {
+                        personTableAdapter.Update(projectDBDataSet.Person);
+                        projectDBDataSet.AcceptChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error adding record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
+
+
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                personBindingSource.EndEdit();
+                int rowsAffected = personTableAdapter.Update(projectDBDataSet.Person);
+                projectDBDataSet.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving changes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                        personBindingSource.RemoveCurrent();
+                        this.personBindingSource.EndEdit();
+                        this.personTableAdapter.Update(this.projectDBDataSet.Person);
+                        this.projectDBDataSet.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

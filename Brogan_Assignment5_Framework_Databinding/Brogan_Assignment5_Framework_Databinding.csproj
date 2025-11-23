@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -74,10 +74,10 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectDatabaseDataSet.Designer.cs">
+    <Compile Include="ProjectDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectDatabaseDataSet.xsd</DependentUpon>
+      <DependentUpon>ProjectDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddDialog.resx">
@@ -95,16 +95,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ProjectDatabaseDataSet.xsc">
-      <DependentUpon>ProjectDatabaseDataSet.xsd</DependentUpon>
+    <None Include="ProjectDBDataSet.xsc">
+      <DependentUpon>ProjectDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ProjectDatabaseDataSet.xsd">
+    <None Include="ProjectDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ProjectDatabaseDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>ProjectDBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ProjectDatabaseDataSet.xss">
-      <DependentUpon>ProjectDatabaseDataSet.xsd</DependentUpon>
+    <None Include="ProjectDBDataSet.xss">
+      <DependentUpon>ProjectDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -132,12 +132,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectDatabase.mdf">
+    <Content Include="ProjectDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectDatabase_log.ldf">
+    <Content Include="ProjectDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>ProjectDatabase.mdf</DependentUpon>
+      <DependentUpon>ProjectDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

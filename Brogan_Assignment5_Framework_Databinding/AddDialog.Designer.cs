@@ -70,9 +70,9 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(68, 175);
+            this.okButton.Location = new System.Drawing.Point(286, 169);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 28);
+            this.okButton.Size = new System.Drawing.Size(96, 50);
             this.okButton.TabIndex = 4;
             this.okButton.Text = "&Ok";
             this.okButton.UseVisualStyleBackColor = true;
@@ -80,9 +80,9 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(286, 175);
+            this.cancelButton.Location = new System.Drawing.Point(53, 169);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 28);
+            this.cancelButton.Size = new System.Drawing.Size(100, 50);
             this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -103,7 +103,6 @@
             this.MinimizeBox = false;
             this.Name = "AddDialog";
             this.Text = "Add New Person";
-            this.Load += new System.EventHandler(this.AddDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
